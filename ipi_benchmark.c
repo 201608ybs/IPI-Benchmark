@@ -4,7 +4,7 @@
 #include <linux/init.h>
 #include <linux/ktime.h>
 
-#define NTIMES 100000
+#define NTIMES 1000000
 
 #define POKE_ANY	0
 #define DRY_RUN		1
@@ -101,11 +101,11 @@ static int __init init_bench_ipi(void)
 	ktime_t ipi, total;
 	int ret;
 
-	ret = bench_ipi(NTIMES, DRY_RUN, &ipi, &total);
-	if (ret)
-		pr_info("IPI_BENCHMARK Dry-run FAILED: %d\n", ret);
-	else
-		pr_info("IPI_BENCHMARK Dry-run:        %18llu, %18llu ns\n", ipi, total);
+	// ret = bench_ipi(NTIMES, DRY_RUN, &ipi, &total);
+	// if (ret)
+	// 	pr_info("IPI_BENCHMARK Dry-run FAILED: %d\n", ret);
+	// else
+	// 	pr_info("IPI_BENCHMARK Dry-run:        %18llu, %18llu ns\n", ipi, total);
 
 	ret = bench_ipi(NTIMES, POKE_SELF, &ipi, &total);
 	if (ret)
@@ -113,23 +113,23 @@ static int __init init_bench_ipi(void)
 	else
 		pr_info("IPI_BENCHMARK Self-IPI:       %18llu, %18llu ns\n", ipi, total);
 
-	ret = bench_ipi(NTIMES, POKE_ANY, &ipi, &total);
-	if (ret)
-		pr_info("IPI_BENCHMARK Normal IPI FAILED: %d\n", ret);
-	else
-		pr_info("IPI_BENCHMARK Normal IPI:     %18llu, %18llu ns\n", ipi, total);
+	// ret = bench_ipi(NTIMES, POKE_ANY, &ipi, &total);
+	// if (ret)
+	// 	pr_info("IPI_BENCHMARK Normal IPI FAILED: %d\n", ret);
+	// else
+	// 	pr_info("IPI_BENCHMARK Normal IPI:     %18llu, %18llu ns\n", ipi, total);
 
-	ret = bench_ipi(NTIMES, POKE_ALL, &ipi, &total);
-	if (ret)
-		pr_info("IPI_BENCHMARK Broadcast IPI FAILED: %d\n", ret);
-	else
-		pr_info("IPI_BENCHMARK Broadcast IPI:  %18llu, %18llu ns\n", ipi, total);
+	// ret = bench_ipi(NTIMES, POKE_ALL, &ipi, &total);
+	// if (ret)
+	// 	pr_info("IPI_BENCHMARK Broadcast IPI FAILED: %d\n", ret);
+	// else
+	// 	pr_info("IPI_BENCHMARK Broadcast IPI:  %18llu, %18llu ns\n", ipi, total);
 
-	ret = bench_ipi(NTIMES, POKE_ALL_LOCK, &ipi, &total);
-	if (ret)
-		pr_info("IPI_BENCHMARK Broadcast lock FAILED: %d\n", ret);
-	else
-		pr_info("IPI_BENCHMARK Broadcast lock: %18llu, %18llu ns\n", ipi, total);
+	// ret = bench_ipi(NTIMES, POKE_ALL_LOCK, &ipi, &total);
+	// if (ret)
+	// 	pr_info("IPI_BENCHMARK Broadcast lock FAILED: %d\n", ret);
+	// else
+	// 	pr_info("IPI_BENCHMARK Broadcast lock: %18llu, %18llu ns\n", ipi, total);
 
 	/* Return error to avoid annoying rmmod. */
 	return -EINVAL;
