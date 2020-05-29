@@ -101,11 +101,11 @@ static int __init init_bench_ipi(void)
 	ktime_t ipi, total;
 	int ret;
 
-	// ret = bench_ipi(NTIMES, DRY_RUN, &ipi, &total);
-	// if (ret)
-	// 	pr_info("IPI_BENCHMARK Dry-run FAILED: %d\n", ret);
-	// else
-	// 	pr_info("IPI_BENCHMARK Dry-run:        %18llu, %18llu ns\n", ipi, total);
+	ret = bench_ipi(NTIMES, DRY_RUN, &ipi, &total);
+	if (ret)
+		pr_info("IPI_BENCHMARK Dry-run FAILED: %d\n", ret);
+	else
+		pr_info("IPI_BENCHMARK Dry-run:        %18llu, %18llu ns\n", ipi, total);
 
 	ret = bench_ipi(NTIMES, POKE_SELF, &ipi, &total);
 	if (ret)
